@@ -4,11 +4,15 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import PeoplePage from '../people-page';
 import ErrorButton from '../error-button';
-import ErrorIndicator from '../error-indicator';
+import SwapiService from '../../services/swapi-service';
+import ErrorBoundary from '../error-boundry';
+
 
 import './app.css';
 
 export default class App extends Component {
+
+    swapiService = new SwapiService();
 
   state = {
     showRandomPlanet: true,
@@ -23,39 +27,29 @@ export default class App extends Component {
     });
   };
 
-
-  componentDidCatch() {
-    this.setState({
-      hasError: true
-    })
-  }
   render() {
-
-    if(this.state.hasError){
-      return <ErrorIndicator />
-    }
 
     const planet = this.state.showRandomPlanet ?
       <RandomPlanet/> :
       null;
 
     return (
-      <div className="stardb-app">
-        <Header />
-        { planet }
+      <ErrorBoundary>
+        <div className="stardb-app">
+          <Header />
+          { planet }
 
-        <div className="row mb2 button-row">
-        <button
-          className="toggle-planet btn btn-warning btn-lg"
-          onClick={this.toggleRandomPlanet}>
-          Toggle Random Planet
-        </button>
-        <ErrorButton />
+          <div className="row mb2 button-row">
+          <button
+            className="toggle-planet btn btn-warning btn-lg"
+            onClick={this.toggleRandomPlanet}>
+            Toggle Random Planet
+          </button>
+          <ErrorButton />
+          </div>
+          <PeoplePage />
         </div>
-        <PeoplePage />
-        <PeoplePage />
-        <PeoplePage />
-      </div>
+      </ErrorBoundary>
     );
   }
 }
