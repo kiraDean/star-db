@@ -57,17 +57,10 @@ export default class ItemDetails extends Component {
     const { item, image} = this.state;
 
     if(!item) {
-      return <span>Select item from the list</span>
+      return <Spinner />
     }
 
-
-    const { id, name, gender, birthYear, eyeColor } = item;
-
-
-
-    // if(this.state.loading) {
-    //   return <Spinner />
-    // }
+    const { name } = item;
 
     return (
       <div className="item-details card">
