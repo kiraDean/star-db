@@ -1,14 +1,14 @@
-import {
-  PersonDetails,
-  StarshipDetails,
-  PlanetDetails
-} from './details'
+import StarshipDetails from './starship-details';
+
+import PlanetDetails from './planet-details';
+
+import PersonDetails from './person-details';
 
 import {
   PersonList,
   StarshipList,
   PlanetList
-} from './item-lists'
+} from './item-lists';
 
 export {
   PersonList,

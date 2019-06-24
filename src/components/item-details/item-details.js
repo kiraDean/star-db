@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Spinner from '../spinner';
 import ErrorButton from '../error-button';
 import SwapiService from '../../services/swapi-service';
 
@@ -25,7 +24,6 @@ export default class ItemDetails extends Component {
   state = {
     item: null,
     image: null
-
   }
 
   componentDidMount() {
@@ -33,7 +31,9 @@ export default class ItemDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.itemId !== prevProps.itemId) {
+    if(this.props.itemId !== prevProps.itemId ||
+       this.props.getData !== prevProps.getData ||
+       this.props.getImageUrl !== prevProps.getImageUrl ) {
       this.updateItem();
     }
   }
@@ -54,10 +54,10 @@ export default class ItemDetails extends Component {
   }
   render() {
 
-    const { item, image} = this.state;
+    const { item, image } = this.state;
 
     if(!item) {
-      return <Spinner />
+      return <p>Select an item from the list</p>
     }
 
     const { name } = item;
