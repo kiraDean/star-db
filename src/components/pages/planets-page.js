@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import Row from '../row';
 import {
-  StarshipList,
-  StarshipDetails
+  PlanetList,
+  PlanetDetails
 } from '../sw-components';
 
-export default class StarshipPage extends Component {
+export default class PlanetsPage extends Component {
 
   state = {
     selectedItem: null
@@ -21,8 +21,8 @@ export default class StarshipPage extends Component {
     const { selectedItem } = this.state;
     return (
       <Row
-        left={<StarshipList onItemSelected={this.onItemSelected}/>}
-        right={<StarshipDetails itemId={selectedItem} />}
+        left={<PlanetList onItemSelected={this.onItemSelected}/>}
+        right={<PlanetDetails itemId={selectedItem} />}
           />
     )
   }
