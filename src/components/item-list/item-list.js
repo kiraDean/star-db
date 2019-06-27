@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 import './item-list.css';
 
 const ItemList = (props) => {
